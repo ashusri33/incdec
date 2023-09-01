@@ -1,23 +1,43 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const [count,setCount]=useState(0);
+  const [colour,setColour]=useState(false);
+
+
+ function addHandler()
+ {
+  setCount(count+1);
+ }
+ function subHandler()
+ {
+  setCount(count-1);
+ }
+ function resetHandler()
+ {
+  setCount(0);
+ }
+ function overHandler()
+ {
+  setColour(true)
+ }
+ function outHandler()
+ {
+  setColour(false)
+ }
+
+    return (
+    <div className="App" >
+       
+          <button className='b1' onClick={addHandler}>+</button>
+          <p className='p'> {count}</p>
+          <button className='b2' onClick={subHandler}>-</button>
+           
+          
+          <button className='b3' onClick={resetHandler} onMouseOver={overHandler} style={{backgroundColor:colour?'yellow':'blue'}} onMouseOut={outHandler}>Reset</button>
+       
+
     </div>
   );
 }
